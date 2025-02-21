@@ -1,5 +1,6 @@
 import { use, useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
+import PokemonShimmer from "./PokemonShimmer";
 
 const Pokemon = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -13,7 +14,7 @@ const Pokemon = () => {
     try {
       const res = await fetch(API);
       const data = await res.json();
-      //   console.log(data);
+      // console.log(data);
 
       const detailedPokemonData = data.results.map(async (currPokemon) => {
         // console.log(currPokemon.url);
@@ -49,7 +50,41 @@ const Pokemon = () => {
   if (loading) {
     return (
       <>
-        <div className="text-4xl">Loading...</div>
+        <section
+          id="mainContainer"
+          className="h-[140vh] w-full bg-blue-200 pb-10"
+        >
+          <h1 className="text-3xl font-medium text-center py-5">
+            Lets Catch Pokemon
+          </h1>
+          {/* pokemon search */}
+          <div id="pokemon_search" className="text-center mb-10">
+            <input
+              type="text"
+              placeholder="Search Pokemon"
+              className="border py-1 px-2 outline-none"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+
+          {/* Pokemon Card Main */}
+          <div className="w-full h-[85%] bg-amber-20">
+            <ul
+              id="card"
+              className="flex items-center justify-center flex-wrap gap-10"
+            >
+              <PokemonShimmer />
+              <PokemonShimmer />
+              <PokemonShimmer />
+              <PokemonShimmer />
+              <PokemonShimmer />
+              <PokemonShimmer />
+              <PokemonShimmer />
+              <PokemonShimmer />
+            </ul>
+          </div>
+        </section>
       </>
     );
   }

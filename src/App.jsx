@@ -1,9 +1,9 @@
-import Pokemon from "./components/Pokemon_Project/Pokemon";
+import ParentComponent from "./components/CustomHook/ParentComponent";
 
 const App = () => {
   return (
     <>
-      <Pokemon />
+      <ParentComponent />
     </>
   );
 };
